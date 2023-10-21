@@ -446,6 +446,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa144ed7bb236a44288b0f113e2c4e15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Changevar: {fileID: 963409832}
   cursorTexture: {fileID: 2800000, guid: c5e1d69719923f044b8c78017bac4101, type: 3}
 --- !u!114 &963409832
 MonoBehaviour:
@@ -474,6 +475,7 @@ MonoBehaviour:
   text_Timer: {fileID: 1390646986}
   time_speed: 2
   random: 0
+  postion: {x: 0, y: 0}
 --- !u!4 &963409833
 Transform:
   m_ObjectHideFlags: 0
