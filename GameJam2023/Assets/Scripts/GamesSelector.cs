@@ -28,11 +28,18 @@ public class GamesSelector : MonoBehaviour
         //instantiate the prefab with 125 distance from other in X axis and get the GameSelector component
         for (int i = 0; i < games.Length; i++)
         {
-            Prefab gameSelector = Instantiate(prefab, new Vector3(i*125,0,0), Quaternion.identity);
+            Prefab gameSelector = Instantiate(prefab, new Vector3(0,0,0), Quaternion.identity);
             GameSelector gameSelectorComponent = gameSelector.GetComponent<GameSelector>();
             //set the gameSelectorComponent values
             gameSelectorComponent.game = games[i];
-            gameSelectorComponent.setup();
+            gameSelectorComponent.Setup();
+
+            //set gameSelector as child of this game object
+            gameSelector.transform.SetParent(this.transform);
+            //move the X and Y to 0 and 0
+            //changue the scale to 1.1 1.1 1
+            gameSelector.transform.localPosition = new Vector3((i*125)-125,0,0);
+            gameSelector.transform.localScale = new Vector3(1.1f,1.1f,1f);
         }
     }
 

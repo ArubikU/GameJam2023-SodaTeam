@@ -1596,7 +1596,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 4}
+  m_AnchoredPosition: {x: -19.700079, y: 4}
   m_SizeDelta: {x: 319.4, y: 105.600006}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1745505620
@@ -1620,6 +1620,11 @@ MonoBehaviour:
   - scene:
       m_Handle: 0
     name: Example Game 2
+    description: Fast
+    icon: {fileID: 21300000, guid: 4e9d4154e57bd27439852510af0716c3, type: 3}
+  - scene:
+      m_Handle: 0
+    name: Example Game 3
     description: Fast
     icon: {fileID: 21300000, guid: 4e9d4154e57bd27439852510af0716c3, type: 3}
   prefab: {fileID: 3502108090332959220, guid: 417e9b25b979b0d4b99c8a3312b1576c, type: 3}
@@ -1729,7 +1734,7 @@ MonoBehaviour:
   m_Content: {fileID: 1745505619}
   m_Horizontal: 1
   m_Vertical: 0
-  m_MovementType: 1
+  m_MovementType: 0
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
