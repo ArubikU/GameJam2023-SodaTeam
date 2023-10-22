@@ -180,7 +180,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 10S
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a37f8363127234e46a19a3ef7785a1fd, type: 2}
   m_sharedMaterial: {fileID: -9205777201867316772, guid: a37f8363127234e46a19a3ef7785a1fd, type: 2}
@@ -1478,7 +1478,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &837247137
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2285,8 +2285,17 @@ MonoBehaviour:
     - 1
   Sounds:
   - ID: 0
-    Category: 2
+    Category: 0
     sound: {fileID: 0}
+    loop: 1
+  - ID: 1
+    Category: 0
+    sound: {fileID: 0}
+    loop: 1
+  - ID: 2
+    Category: 0
+    sound: {fileID: 0}
+    loop: 0
   SoundsPlayers:
   - audioSource: {fileID: 1095871114}
     soundCategory: 0
@@ -2294,6 +2303,8 @@ MonoBehaviour:
     soundCategory: 1
   - audioSource: {fileID: 832436738}
     soundCategory: 2
+  NORMAL_CLOCK: 0
+  END_TIME_CLOCK: 0
 --- !u!1 &1456421652
 GameObject:
   m_ObjectHideFlags: 0
@@ -2560,7 +2571,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1872122078}
         m_TargetAssemblyTypeName: PlayButton, Assembly-CSharp
-        m_MethodName: ReOpenMainGui
+        m_MethodName: CloseTimePanel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
