@@ -47,6 +47,7 @@ public class ChangeColor : MonoBehaviour //change name to spawn letter
         {
             Cleanlist();
             //change nextscene
+            //lose
         }
     }
 

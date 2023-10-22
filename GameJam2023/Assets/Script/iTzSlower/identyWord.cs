@@ -39,8 +39,10 @@ public class identyWord : MonoBehaviour
             }
         }
         else
+        {
+            GetComponent<ChangeScene>().Changed();
             Debug.Log("WIN");
-
+        }
     }
 }
 
