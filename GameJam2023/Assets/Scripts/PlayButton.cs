@@ -10,6 +10,8 @@ public class PlayButton : MonoBehaviour
 List<Button> MainGuiButtons = new List<Button>();
 
     [SerializeField] 
+    GameObject GamesPanel;
+    [SerializeField] 
     GameObject TimePanel;
 
 
@@ -25,7 +27,35 @@ List<Button> MainGuiButtons = new List<Button>();
         }
 
         //enable time panel
-        TimePanel.SetActive(true);
+        GamesPanel.SetActive(true);
 
+    }
+
+    public void TimePanelClick()
+    {
+        //enable time panel
+        TimePanel.SetActive(true);
+    }
+
+    public void CloseTimePanel()
+    {
+        //disable time panel
+        TimePanel.SetActive(false);
+    }
+
+    public void ReOpenMainGui()
+    {
+        foreach (Button button in MainGuiButtons)
+        {
+            //enable buttons
+            button.interactable = true;
+            Debug.Log("Button Enabled: " + button.name);
+        }
+
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
     }
 }

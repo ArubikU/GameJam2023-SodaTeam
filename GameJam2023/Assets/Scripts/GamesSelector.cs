@@ -13,7 +13,9 @@ public class Game {
     public string description;
     public Sprite icon;
     
+    
     public Prefab PlayerUI;
+    public Prefab PlayButton;
     
 }
 
