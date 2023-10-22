@@ -7,7 +7,7 @@ using UnityEngine;
 public class identyWord : MonoBehaviour
 {
     [SerializeField] string word;
-    [SerializeField] List<TheVariant> words = new List<TheVariant>();
+    public List<TheVariant> words = new List<TheVariant>();
     void Start()
     {
         for (int i = 1; i < word.Length + 1; i++)
@@ -23,7 +23,24 @@ public class identyWord : MonoBehaviour
             }
             variant.active = false;
             words.Add(variant);
+
         }
+    }
+    public void Delete()
+    {
+        if (words.Count > 0)
+        {
+            for (int i = 0; i < words.Count; i++)
+            {
+                if(words[i].active == true)
+                {
+                    words.RemoveAt(i);
+                }
+            }
+        }
+        else
+            Debug.Log("WIN");
+
     }
 }
 
