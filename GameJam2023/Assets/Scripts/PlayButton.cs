@@ -8,20 +8,14 @@ public class PlayButton : MonoBehaviour
 {
 [SerializeField]
 List<Button> MainGuiButtons = new List<Button>();
-    // Start is called before the first frame update
-    void Start()
-    {
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    [SerializeField] 
+    GameObject GamesPanel;
     [SerializeField] 
     GameObject TimePanel;
 
+
+    //Action to main Click
     public void MainClick()
     {
 
@@ -33,7 +27,35 @@ List<Button> MainGuiButtons = new List<Button>();
         }
 
         //enable time panel
-        TimePanel.SetActive(true);
+        GamesPanel.SetActive(true);
 
+    }
+
+    public void TimePanelClick()
+    {
+        //enable time panel
+        TimePanel.SetActive(true);
+    }
+
+    public void CloseTimePanel()
+    {
+        //disable time panel
+        TimePanel.SetActive(false);
+    }
+
+    public void ReOpenMainGui()
+    {
+        foreach (Button button in MainGuiButtons)
+        {
+            //enable buttons
+            button.interactable = true;
+            Debug.Log("Button Enabled: " + button.name);
+        }
+
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
     }
 }

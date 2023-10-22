@@ -45,6 +45,7 @@ int CurrentTick = 0;
         }
     }
 
+    //Pause the animation
     public void Pause(){
         IsPlaying=false;
     }
