@@ -4,12 +4,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using Button = UnityEngine.UI.Button;
 using Image = UnityEngine.UI.Image;
+using GameObject = UnityEngine.GameObject;
 
 public class GameSelector : MonoBehaviour
 {
     public Button button;
     public Image image;
     public Game game;
+
+    public GameObject playerUI;
 
 
     // Start is called before the first frame update
@@ -28,5 +31,12 @@ public class GameSelector : MonoBehaviour
         //get first children
         image = this.transform.GetChild(0).GetComponent<Image>();
         image.sprite = game.icon;
+
+        playerUI = game.PlayerUI;
+        //set button onClick action
+        button.onClick.AddListener(() => {
+            Application.LoadLevel(game.sceneName);
+            playerUI.GetComponent<PlayerUI>().StartClock(PlayerPrefs.GetInt("Time"));
+        });
     }
 }

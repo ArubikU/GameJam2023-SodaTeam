@@ -8,9 +8,12 @@ using Prefab = UnityEngine.GameObject;
 public class Game {
     [SerializeField]
     public Scene scene;
+    public string sceneName;
     public string name;
     public string description;
     public Sprite icon;
+    
+    public Prefab PlayerUI;
     
 }
 
@@ -38,7 +41,7 @@ public class GamesSelector : MonoBehaviour
             gameSelector.transform.SetParent(this.transform);
             //move the X and Y to 0 and 0
             //changue the scale to 1.1 1.1 1
-            gameSelector.transform.localPosition = new Vector3((i*125)-125,0,0);
+            gameSelector.transform.localPosition = new Vector3(0,0,0);
             gameSelector.transform.localScale = new Vector3(1.1f,1.1f,1f);
         }
     }
