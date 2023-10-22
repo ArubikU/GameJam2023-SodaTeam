@@ -5,18 +5,24 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ChangeColor : MonoBehaviour
+public class ChangeColor : MonoBehaviour //change name to spawn letter
 {
     [SerializeField] 
-    List<GameObject> ListGrillos = new List<GameObject>();
+    List<GameObject> Tuneles = new();
+    [SerializeField]
+    List<Sprite> letters = new();
+
     [SerializeField] float timer;
     [SerializeField] TMP_Text text_Timer;
     public float time_speed;
-    [SerializeField] int random;
+    int random;
     float time_2;
-    public Vector2 postion;
+    [HideInInspector]public Vector2 postion;
 
-
+    void Start()
+    {
+        Cleanlist();
+    }
     void Update()
     {
         
@@ -33,7 +39,7 @@ public class ChangeColor : MonoBehaviour
         }
         else
         {
-            forlist();
+            Cleanlist();
             //change scene
         }
     }
@@ -44,19 +50,19 @@ public class ChangeColor : MonoBehaviour
 
         if (time_speed < time_2)
         {
-            forlist();
-
-            random = UnityEngine.Random.Range(0, ListGrillos.Count);
-            ListGrillos[random].GetComponent<Image>().color = Color.green;
-            postion = ListGrillos[random].transform.position;
+            Cleanlist();
+            random = UnityEngine.Random.Range(0, Tuneles.Count);
+            Tuneles[random].GetComponent<Image>().sprite = letters[0];
+            Tuneles[random].gameObject.SetActive(true);
+            postion = Tuneles[random].transform.position;
             time_2 = 0;
         }
     }
-    void forlist()
+    void Cleanlist()
     {
-        for (int i = 0; i < ListGrillos.Count; i++)
+        for (int i = 0; i < Tuneles.Count; i++)
         {
-            ListGrillos[i].GetComponent<Image>().color = Color.white;
+            Tuneles[i].gameObject.SetActive(false);
         }
     }
 }
