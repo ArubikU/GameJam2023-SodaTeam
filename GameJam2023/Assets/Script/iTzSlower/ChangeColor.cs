@@ -14,6 +14,9 @@ public class ChangeColor : MonoBehaviour
     public float time_speed;
     [SerializeField] int random;
     float time_2;
+    public Vector2 postion;
+
+
     void Update()
     {
         
@@ -45,7 +48,7 @@ public class ChangeColor : MonoBehaviour
 
             random = UnityEngine.Random.Range(0, ListGrillos.Count);
             ListGrillos[random].GetComponent<Image>().color = Color.green;
-
+            postion = ListGrillos[random].transform.position;
             time_2 = 0;
         }
     }
