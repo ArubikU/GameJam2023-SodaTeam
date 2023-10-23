@@ -20,7 +20,10 @@ public enum SoundID
 {
     NORMAL_CLOCK,
     END_TIME_CLOCK,
-    END_CLOCK
+    END_CLOCK,
+    MENU_BUTTON,
+    LETTER_CORRECT,
+    LETTER_WRONG
 }
 [System.Serializable]
 public enum SoundCategory
@@ -240,6 +243,15 @@ public class PlayerUI : MonoBehaviour
         }
     }
 
+    public void PlaySoundString(string soundId){
+        SoundID soundID = (SoundID)Enum.Parse(typeof(SoundID), soundId);
+        playSound(soundID);
+    }
+
+    public void PlaySound(SoundID soundID,float volume,float pitch){
+        //TODO: Play sound with volume and pitch
+    }
+
     public void stopSound(SoundID soundID)
     {
         foreach (SoundsPlayer soundsPlayer in SoundsPlayers)
@@ -277,5 +289,32 @@ public class PlayerUI : MonoBehaviour
         NORMAL_CLOCK = false;
         END_TIME_CLOCK = false;
 
+    }
+
+    public void GameDataExecute(GameData data){
+        if(data.win){
+
+        }else{
+
+        }
+    }
+}
+
+public class GameData {
+    public int RestTime = 0;
+    public int MaxTime = 0;
+    public string sceneName = "";
+    public string gameName = "";
+    public bool win = false;
+
+    public int score = 0;
+
+    public GameData(int restTime, int maxTime, string sceneName, string gameName, bool win, int score){
+        this.RestTime = restTime;
+        this.MaxTime = maxTime;
+        this.sceneName = sceneName;
+        this.gameName = gameName;
+        this.win = win;
+        this.score = score;
     }
 }

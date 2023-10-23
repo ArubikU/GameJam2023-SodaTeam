@@ -210,11 +210,11 @@ MonoBehaviour:
   m_fontSize: 36
   m_fontSizeBase: 36
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -243,7 +243,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: -14.924236, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -902,6 +902,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1390038799}
+        m_TargetAssemblyTypeName: PlayerUI, Assembly-CSharp
+        m_MethodName: PlaySoundString
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: MENU_BUTTON
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &406596273
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -952,6 +964,7 @@ GameObject:
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
   - component: {fileID: 519420030}
+  - component: {fileID: 519420033}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1077,6 +1090,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &519420033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13fabbd289d124b4b9cecbea37110937, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &558384283
 GameObject:
   m_ObjectHideFlags: 0
@@ -2016,6 +2041,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 1
+      - m_Target: {fileID: 1390038799}
+        m_TargetAssemblyTypeName: PlayerUI, Assembly-CSharp
+        m_MethodName: PlaySoundString
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: MENU_BUTTON
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1261870664
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2286,15 +2323,27 @@ MonoBehaviour:
   Sounds:
   - ID: 0
     Category: 0
-    sound: {fileID: 0}
+    sound: {fileID: 8300000, guid: 233d1be24180b37408a81c9ead27a222, type: 3}
     loop: 1
   - ID: 1
     Category: 0
-    sound: {fileID: 0}
+    sound: {fileID: 8300000, guid: f04d254f74a06374781313f0075849b9, type: 3}
     loop: 1
   - ID: 2
     Category: 0
-    sound: {fileID: 0}
+    sound: {fileID: 8300000, guid: 53f98a6179dca3f41a0b35f10101e44a, type: 3}
+    loop: 0
+  - ID: 3
+    Category: 2
+    sound: {fileID: 8300000, guid: da5abd6ccedf6c94bac1333545a78c4c, type: 3}
+    loop: 0
+  - ID: 4
+    Category: 2
+    sound: {fileID: 8300000, guid: 602577775a3fd0245af806b632cfec05, type: 3}
+    loop: 0
+  - ID: 5
+    Category: 2
+    sound: {fileID: 8300000, guid: 9301383ab6613dc45b05a3c3cf57766c, type: 3}
     loop: 0
   SoundsPlayers:
   - audioSource: {fileID: 1095871114}
@@ -2746,28 +2795,54 @@ MonoBehaviour:
   games:
   - scene:
       m_Handle: 0
-    sceneName: luciernagas
-    name: Luciernagas
+    sceneName: MiniGame01,MiniGame02,MiniGame03,MiniGame04,MiniGame05,MiniGame06,MiniGame07,MiniGame08
+    name: Scrabble
     description: Fast
-    icon: {fileID: 21300000, guid: 4e9d4154e57bd27439852510af0716c3, type: 3}
+    icon: {fileID: 21300000, guid: c29a5e785dc938d4b88f3be4ee133102, type: 3}
+    animatedIcon: 1
+    animatedIcons:
+    - {fileID: 21300000, guid: c29a5e785dc938d4b88f3be4ee133102, type: 3}
+    - {fileID: 21300000, guid: 4fa17a0cdf6a15e45b429938f4c2b7f3, type: 3}
+    - {fileID: 21300000, guid: 925150445c8a36940b3d4b9053307aa4, type: 3}
+    - {fileID: 21300000, guid: 4ffc3ba9217d4f7469330f985d8f833c, type: 3}
+    - {fileID: 21300000, guid: df0b1ef250a78b642b2d012e6283b373, type: 3}
+    - {fileID: 21300000, guid: 06fb7244783f121458452cc694a5a985, type: 3}
+    - {fileID: 21300000, guid: ce85d57e87816e147899d7de0e507eb3, type: 3}
+    - {fileID: 21300000, guid: 4ecc6bd95ffe522428f32a0e217f814d, type: 3}
+    FrameRate: 13
+    CurrentFrame: 0
+    CurrentTick: 0
     PlayerUI: {fileID: 1390038793}
     PlayButton: {fileID: 1872122076}
+    time: 30
   - scene:
       m_Handle: 0
     sceneName: luciernagas
     name: Example Game 2
     description: Fast
     icon: {fileID: 21300000, guid: 4e9d4154e57bd27439852510af0716c3, type: 3}
+    animatedIcon: 0
+    animatedIcons: []
+    FrameRate: 1
+    CurrentFrame: 0
+    CurrentTick: 0
     PlayerUI: {fileID: 1390038793}
     PlayButton: {fileID: 1872122076}
+    time: 30
   - scene:
       m_Handle: 0
     sceneName: luciernagas
     name: Example Game 3
     description: Fast
     icon: {fileID: 21300000, guid: 4e9d4154e57bd27439852510af0716c3, type: 3}
+    animatedIcon: 0
+    animatedIcons: []
+    FrameRate: 1
+    CurrentFrame: 0
+    CurrentTick: 0
     PlayerUI: {fileID: 1390038793}
     PlayButton: {fileID: 1872122076}
+    time: 30
   prefab: {fileID: 3502108090332959220, guid: 417e9b25b979b0d4b99c8a3312b1576c, type: 3}
 --- !u!114 &1745505621
 MonoBehaviour:
@@ -3079,6 +3154,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1390038799}
+        m_TargetAssemblyTypeName: PlayerUI, Assembly-CSharp
+        m_MethodName: PlaySoundString
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: MENU_BUTTON
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1844128074
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3170,6 +3257,7 @@ MonoBehaviour:
   - {fileID: 2034627718}
   GamesPanel: {fileID: 633969376}
   TimePanel: {fileID: 837247136}
+  playerUI: {fileID: 0}
 --- !u!1 &2034627716
 GameObject:
   m_ObjectHideFlags: 0

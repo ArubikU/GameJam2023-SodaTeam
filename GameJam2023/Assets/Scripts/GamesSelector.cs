@@ -12,10 +12,19 @@ public class Game {
     public string name;
     public string description;
     public Sprite icon;
+
+    public bool animatedIcon = false;
+
+    public List<Sprite> animatedIcons = new List<Sprite>();
+    public int FrameRate = 1;
+    public int CurrentFrame = 0;
+    public int CurrentTick = 0;
     
     
     public Prefab PlayerUI;
     public Prefab PlayButton;
+
+    public int time = 30;
     
 }
 

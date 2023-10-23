@@ -6,10 +6,19 @@ using UnityEngine;
 
 public class identyWord : MonoBehaviour
 {
-    [SerializeField] string word;
+    [SerializeField] public string word;
     public List<TheVariant> words = new List<TheVariant>();
+
+
+    [SerializeField]
+    PlayerUI playerUI;
+
+    int originalTime = 0;
+
     void Start()
     {
+        playerUI = GameObject.FindGameObjectWithTag("PlayerUI").GetComponent<PlayerUI>();
+        originalTime = playerUI.getTime();
         for (int i = 1; i < word.Length + 1; i++)
         {
             TheVariant variant = new ();
@@ -40,8 +49,12 @@ public class identyWord : MonoBehaviour
         }
         else
         {
-            GetComponent<ChangeScene>().Changed();
-            Debug.Log("WIN");
+
+            
+        string sceneName = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
+            int timer = originalTime- playerUI.getTime();
+            GameData data = new GameData(timer,originalTime,sceneName,"scrabble",true,100);
+            playerUI.GameDataExecute(data);
         }
     }
 }

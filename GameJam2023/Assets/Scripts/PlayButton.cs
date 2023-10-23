@@ -15,10 +15,13 @@ List<Button> MainGuiButtons = new List<Button>();
     GameObject TimePanel;
 
 
+    [SerializeField]
+    PlayerUI playerUI;
     //Action to main Click
     public void MainClick()
     {
 
+        playerUI = GameObject.FindGameObjectWithTag("PlayerUI").GetComponent<PlayerUI>();
         foreach (Button button in MainGuiButtons)
         {
             //disable buttons
@@ -26,6 +29,7 @@ List<Button> MainGuiButtons = new List<Button>();
              Debug.Log("Button Disabled: " + button.name);
         }
 
+            playerUI.playSound(SoundID.MENU_BUTTON);
         //enable time panel
         GamesPanel.SetActive(true);
 
@@ -35,12 +39,14 @@ List<Button> MainGuiButtons = new List<Button>();
     {
         //enable time panel
         TimePanel.SetActive(true);
+            playerUI.playSound(SoundID.MENU_BUTTON);
     }
 
     public void CloseTimePanel()
     {
         //disable time panel
         TimePanel.SetActive(false);
+            playerUI.playSound(SoundID.MENU_BUTTON);
     }
 
     public void ReOpenMainGui()
@@ -50,6 +56,7 @@ List<Button> MainGuiButtons = new List<Button>();
             //enable buttons
             button.interactable = true;
             Debug.Log("Button Enabled: " + button.name);
+            playerUI.playSound(SoundID.MENU_BUTTON);
         }
 
     }
