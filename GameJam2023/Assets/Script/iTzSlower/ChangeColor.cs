@@ -76,6 +76,10 @@ public class ChangeColor : MonoBehaviour //change name to spawn letter
             
             GameData data = new GameData(timer,originalTime,sceneName,"scrabble",false,score);
             playerUI.GameDataExecute(data);
+
+            Reset();
+            id.Reset();
+
             //change nextscene
             //lose
         }
@@ -169,6 +173,21 @@ public class ChangeColor : MonoBehaviour //change name to spawn letter
             }
             
         }
+    }
+
+    public void Reset()
+    {
+                GameObject palabra = GameObject.Find("Canvas/background/Palabra");
+                for (int i = 0; i < palabra.transform.childCount; i++)
+                {
+                    GameObject child = palabra.transform.GetChild(i).gameObject;
+                    child.GetComponent<Image>().color = new Color(0,0,0, 1);
+                    child.GetComponent<Image>().material = null;
+                    WordSlot = 0;
+                    wordLenght = 0;
+                    originalTime = 0;
+                }
+    
     }
 
 }

@@ -7,6 +7,7 @@ using UnityEngine;
 public class identyWord : MonoBehaviour
 {
     [SerializeField] public string word;
+    private string originalword;
     public List<TheVariant> words = new List<TheVariant>();
 
 
@@ -15,8 +16,9 @@ public class identyWord : MonoBehaviour
 
     int originalTime = 0;
 
-    void Start()
+    public void Start()
     {
+        originalword = word;
         playerUI = GameObject.FindGameObjectWithTag("PlayerUI").GetComponent<PlayerUI>();
         originalTime = playerUI.getTime();
         for (int i = 1; i < word.Length + 1; i++)
@@ -55,9 +57,48 @@ public class identyWord : MonoBehaviour
             int timer = originalTime- playerUI.getTime();
             GameData data = new GameData(timer,originalTime,sceneName,"scrabble",true,100);
             playerUI.GameDataExecute(data);
+            Reset();
+            ChangeColor changeColor = GameObject.Find("GameManager").GetComponent<ChangeColor>();
+            changeColor.Reset();
+            reseted = false;
         }
     }
+    
+    private bool reseted = false;
+
+    void Update()
+    {
+        if (reseted == false)
+        {
+            Reset();
+            reseted = true;
+        }
+    }
+
+public void Reset()
+{
+    words.Clear();
+    word = originalword;
+        for (int i = 1; i < word.Length + 1; i++)
+        {
+            TheVariant variant = new ();
+            if (i == 1)
+            {
+                variant.letra = (word[..i]);
+            }
+            else
+            {
+                variant.letra = (word[(i - 1)..i]);
+            }
+            variant.active = false;
+            words.Add(variant);
+
+        }
+
 }
+}
+
+
 
 [System.Serializable]
 public class TheVariant

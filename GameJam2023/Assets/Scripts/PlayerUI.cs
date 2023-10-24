@@ -135,7 +135,7 @@ public class PlayerUI : MonoBehaviour
             updateClock(currentClockTime);
             if (currentClockTime == 0)
             {
-                playSound(SoundID.END_CLOCK);
+                StopClock();
             }
             else
             {
@@ -175,6 +175,18 @@ public class PlayerUI : MonoBehaviour
         maxClockTime = time;
     }
 
+    public void StopClock()
+    {
+        stopSound(SoundID.NORMAL_CLOCK);
+        playSound(SoundID.END_CLOCK);
+        //disable clock
+        ClockObject.SetActive(false);
+        currentClockTime = 0;
+        maxClockTime = 0;
+        NORMAL_CLOCK = false;
+        END_TIME_CLOCK = false;
+    }
+
     public SerializableColor getColor()
     {
         //get amount of colors
@@ -208,6 +220,16 @@ public class PlayerUI : MonoBehaviour
     public void setPlayerTime(int time)
     {
         PlayerPrefs.SetInt(PlayerPrefs.GetString("InteractedGame") + ".Time", time);
+    }
+
+    public void resetLastClock()
+    {
+        //get last interacted game
+        string gameName = PlayerPrefs.GetString("InteractedGame");
+        //get last interacted game time
+        int time = PlayerPrefs.GetInt(gameName + ".Time");
+        //set clock time to last interacted game time
+        StartClock(time);
     }
 
     public void getVolume(SoundCategory category)
@@ -292,11 +314,31 @@ public class PlayerUI : MonoBehaviour
     }
 
     public void GameDataExecute(GameData data){
-        if(data.win){
+        StopClock();
+        Application.UnloadLevel(data.sceneName);
 
-        }else{
+        //save all data in player prefs
+        PlayerPrefs.SetInt("GameData.Time", data.RestTime);
+        PlayerPrefs.SetInt("GameData.MaxTime", data.MaxTime);
+        PlayerPrefs.SetString("GameData.SceneName", data.sceneName);
+        PlayerPrefs.SetString("GameData.GameName", data.gameName);
+        PlayerPrefs.SetInt("GameData.Win", data.win ? 1 : 0);
+        PlayerPrefs.SetInt("GameData.Score", data.score);
+        
 
-        }
+        Application.LoadLevel("WinScene");
+    }
+
+    public  GameData GameDataGet(){
+        //get all data from player prefs
+        int restTime = PlayerPrefs.GetInt("GameData.Time");
+        int maxTime = PlayerPrefs.GetInt("GameData.MaxTime");
+        string sceneName = PlayerPrefs.GetString("GameData.SceneName");
+        string gameName = PlayerPrefs.GetString("GameData.GameName");
+        bool win = PlayerPrefs.GetInt("GameData.Win") == 1 ? true : false;
+        int score = PlayerPrefs.GetInt("GameData.Score");
+
+        return new GameData(restTime,maxTime,sceneName,gameName,win,score);
     }
 }
 
