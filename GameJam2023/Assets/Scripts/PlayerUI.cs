@@ -86,6 +86,20 @@ public class SerializableColor
     }
 }
 
+public class PlayerUISearcher{
+    PlayerUI playerUI;
+    public PlayerUISearcher(){
+        playerUI = GameObject.FindGameObjectWithTag("PlayerUI").GetComponent<PlayerUI>();
+    }
+
+    public PlayerUI getPlayerUI(){
+        if (playerUI == null){
+            playerUI = GameObject.FindGameObjectWithTag("PlayerUI").GetComponent<PlayerUI>();
+        }
+        return playerUI;
+    }
+}
+
 public class PlayerUI : MonoBehaviour
 {
 
@@ -115,6 +129,13 @@ public class PlayerUI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //verify if exist more than one instance of this object
+        if (FindObjectsOfType<PlayerUI>().Length > 1)
+        {
+            //destroy this object
+            Destroy(this.gameObject);
+        }
+
         DontDestroyOnLoad(this.gameObject);
         setupPlayerPrefs();
     }

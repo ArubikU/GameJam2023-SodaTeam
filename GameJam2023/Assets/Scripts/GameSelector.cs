@@ -15,7 +15,7 @@ public class GameSelector : MonoBehaviour
     
     public Game game;
 
-    public GameObject playerUI;
+    public PlayerUISearcher playerUI;
     public GameObject playButton;
 
     public TMP_Text text = null;
@@ -52,14 +52,14 @@ public class GameSelector : MonoBehaviour
             image.sprite = game.animatedIcons[0];
         }
 
-        playerUI = game.PlayerUI;
+        playerUI = new PlayerUISearcher();
         playButton = game.PlayButton;
         //set button onClick action
         button.onClick.AddListener(() => {
-            game.PlayerUI.GetComponent<PlayerUI>().setInteractedGame(game.sceneName);
-            playerUI.GetComponent<PlayerUI>().StartClock(PlayerPrefs.GetInt(game.sceneName+".Time"));
+            playerUI.getPlayerUI().GetComponent<PlayerUI>().setInteractedGame(game.sceneName);
+            playerUI.getPlayerUI().GetComponent<PlayerUI>().StartClock(PlayerPrefs.GetInt(game.sceneName+".Time"));
 
-            game.PlayerUI.GetComponent<PlayerUI>().playSound(SoundID.MENU_BUTTON);
+            playerUI.getPlayerUI().GetComponent<PlayerUI>().playSound(SoundID.MENU_BUTTON);
             if(game.sceneName.Contains(",")){
                 string[] scenes = game.sceneName.Split(",");
                 int random = Random.Range(0, scenes.Length);
@@ -70,8 +70,8 @@ public class GameSelector : MonoBehaviour
             }
         });
         OptionsButton.onClick.AddListener(() => {
-            game.PlayerUI.GetComponent<PlayerUI>().playSound(SoundID.MENU_BUTTON);
-            game.PlayerUI.GetComponent<PlayerUI>().setInteractedGame(game.sceneName);
+            playerUI.getPlayerUI().GetComponent<PlayerUI>().playSound(SoundID.MENU_BUTTON);
+            playerUI.getPlayerUI().GetComponent<PlayerUI>().setInteractedGame(game.sceneName);
             playButton.GetComponent<PlayButton>().TimePanelClick();
         });
     }
@@ -81,7 +81,7 @@ public class GameSelector : MonoBehaviour
     void FixedUpdate()
     {
         game.CurrentTick++;
-        if (game.CurrentTick >= game.FrameRate)
+        if (game.CurrentTick >= game.FrameRate && game.animatedIcon)
         {
             game.CurrentTick = 0;
             game.CurrentFrame++;

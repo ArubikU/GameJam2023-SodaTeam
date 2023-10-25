@@ -22,7 +22,7 @@ public class ChangeColor : MonoBehaviour //change name to spawn letter
     float time_speed;
 
     [SerializeField]
-    PlayerUI playerUI;
+    PlayerUISearcher playerUI;
 
     [HideInInspector]public Vector2 postion;
 
@@ -37,16 +37,28 @@ public class ChangeColor : MonoBehaviour //change name to spawn letter
 
     void Start()
     {
-        GameObject.Find("Canvas/background/Time").SetActive(false);
-
-        //find playerUI game object by tag "PlayerUI"
-        playerUI = GameObject.FindGameObjectWithTag("PlayerUI").GetComponent<PlayerUI>();
-        originalTime = playerUI.getTime();
-        Cleanlist();
         id = GetComponent<identyWord>();
         String word = id.word;
+        GameObject palabra = GameObject.Find("Canvas/background/Palabra");
+        //go for every image in the path Canvas/background/Palabra and add the Outline component with white color
+        for (int i = 0; i < palabra.transform.childCount; i++)
+        {
+            GameObject child = palabra.transform.GetChild(i).gameObject;
+            child.AddComponent<Outline>();
+            child.GetComponent<Outline>().effectColor = new Color(1,1,1,1);
+            child.GetComponent<Outline>().effectDistance = new Vector2(4,-4);
+        }
+
+
+        GameObject.Find("Canvas/background/Time").SetActive(false);
+
+        playerUI = new PlayerUISearcher();
+        originalTime = playerUI.getPlayerUI().getTime();
+        Cleanlist();
         wordLenght = word.Length;
         sceneName = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
+
+
     }
     void Update()
     {
@@ -59,7 +71,7 @@ public class ChangeColor : MonoBehaviour //change name to spawn letter
 
     private void Times()
     {   
-        int timer = playerUI.getTime();
+        int timer = playerUI.getPlayerUI().getTime();
         
         if (timer > 0)
         {
@@ -75,7 +87,7 @@ public class ChangeColor : MonoBehaviour //change name to spawn letter
 
             
             GameData data = new GameData(timer,originalTime,sceneName,"scrabble",false,score);
-            playerUI.GameDataExecute(data);
+            playerUI.getPlayerUI().GameDataExecute(data);
 
             Reset();
             id.Reset();
@@ -167,9 +179,9 @@ public class ChangeColor : MonoBehaviour //change name to spawn letter
                 child.GetComponent<Image>().color = new Color(0, 1, 0, 1);
                 child.GetComponent<Image>().material = null;
                 WordSlot++;
-                playerUI.playSound(SoundID.LETTER_CORRECT);
+                playerUI.getPlayerUI().playSound(SoundID.LETTER_CORRECT);
             }else{
-                playerUI.playSound(SoundID.LETTER_WRONG);
+                playerUI.getPlayerUI().playSound(SoundID.LETTER_WRONG);
             }
             
         }

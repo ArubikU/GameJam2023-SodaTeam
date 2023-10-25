@@ -26,7 +26,7 @@ public class FinalScene : MonoBehaviour
     public AudioClip ButtonSound;
 
 
-    PlayerUI playerUI;
+    PlayerUISearcher playerUI;
     GameData data;
     // Start is called before the first frame update
     void Start()
@@ -34,8 +34,8 @@ public class FinalScene : MonoBehaviour
         star1.color = new Color(star1.color.r, star1.color.g, star1.color.b, 0);
         star2.color = new Color(star2.color.r, star2.color.g, star2.color.b, 0);
         star3.color = new Color(star3.color.r, star3.color.g, star3.color.b, 0);
-        playerUI = GameObject.FindGameObjectWithTag("PlayerUI").GetComponent<PlayerUI>();
-        data = playerUI.GameDataGet();
+        playerUI = new PlayerUISearcher();
+        data = playerUI.getPlayerUI().GameDataGet();
         score.text = "Puntos: "+data.score.ToString();
         time.text = "Tiempo Restante: "+data.RestTime.ToString();
 
@@ -63,13 +63,11 @@ public class FinalScene : MonoBehaviour
     }
 
     public void GoMain(){
-        PlayerPrefs.DeleteAll();
         SceneManager.LoadScene("MainScene");
     }
 
     public void Retry(){
-        playerUI.resetLastClock();
-        PlayerPrefs.DeleteAll();
+        playerUI.getPlayerUI().resetLastClock();
         SceneManager.LoadScene(data.sceneName);
     }
 

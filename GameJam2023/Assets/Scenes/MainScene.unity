@@ -819,6 +819,7 @@ GameObject:
   - component: {fileID: 406596274}
   - component: {fileID: 406596273}
   - component: {fileID: 406596272}
+  - component: {fileID: 406596275}
   m_Layer: 5
   m_Name: 60s
   m_TagString: Untagged
@@ -952,6 +953,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 406596270}
   m_CullTransparentMesh: 1
+--- !u!114 &406596275
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 406596270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ff58642dfe26e841815ac29045050ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  time: 60
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1958,6 +1972,7 @@ GameObject:
   - component: {fileID: 1261870665}
   - component: {fileID: 1261870664}
   - component: {fileID: 1261870663}
+  - component: {fileID: 1261870666}
   m_Layer: 5
   m_Name: 90S
   m_TagString: Untagged
@@ -2091,6 +2106,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1261870661}
   m_CullTransparentMesh: 1
+--- !u!114 &1261870666
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1261870661}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ff58642dfe26e841815ac29045050ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  time: 90
 --- !u!1 &1287258498
 GameObject:
   m_ObjectHideFlags: 0
@@ -3107,6 +3135,7 @@ GameObject:
   - component: {fileID: 1844128075}
   - component: {fileID: 1844128074}
   - component: {fileID: 1844128073}
+  - component: {fileID: 1844128076}
   m_Layer: 5
   m_Name: 30S
   m_TagString: Untagged
@@ -3240,6 +3269,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1844128071}
   m_CullTransparentMesh: 1
+--- !u!114 &1844128076
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1844128071}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ff58642dfe26e841815ac29045050ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  time: 30
 --- !u!1 &1872122076
 GameObject:
   m_ObjectHideFlags: 0
@@ -3293,7 +3335,6 @@ MonoBehaviour:
   - {fileID: 2034627718}
   GamesPanel: {fileID: 633969376}
   TimePanel: {fileID: 837247136}
-  playerUI: {fileID: 0}
 --- !u!1 &2034627716
 GameObject:
   m_ObjectHideFlags: 0

@@ -12,15 +12,15 @@ public class identyWord : MonoBehaviour
 
 
     [SerializeField]
-    PlayerUI playerUI;
+    PlayerUISearcher playerUI;
 
     int originalTime = 0;
 
     public void Start()
     {
         originalword = word;
-        playerUI = GameObject.FindGameObjectWithTag("PlayerUI").GetComponent<PlayerUI>();
-        originalTime = playerUI.getTime();
+        playerUI = new PlayerUISearcher();
+        originalTime = playerUI.getPlayerUI().getTime();
         for (int i = 1; i < word.Length + 1; i++)
         {
             TheVariant variant = new ();
@@ -54,9 +54,8 @@ public class identyWord : MonoBehaviour
 
             
         string sceneName = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
-            int timer = originalTime- playerUI.getTime();
-            GameData data = new GameData(timer,originalTime,sceneName,"scrabble",true,100);
-            playerUI.GameDataExecute(data);
+            GameData data = new GameData( playerUI.getPlayerUI().getTime(),originalTime,sceneName,"scrabble",true,100);
+            playerUI.getPlayerUI().GameDataExecute(data);
             Reset();
             ChangeColor changeColor = GameObject.Find("GameManager").GetComponent<ChangeColor>();
             changeColor.Reset();
